@@ -1,4 +1,4 @@
-title: blog
+title: Tblog
 author: selfbabm
 email: your-email@domain.com
 description: > # this means to ignore newlines until "show_exerpts:"
@@ -25,7 +25,6 @@ texture:
   # generate social links in footer
   social_links:
     github:  selfbabm
- 
 
 # If you want to link only specific pages in your header, uncomment
 # this and add the path to the pages in order as they should show up
