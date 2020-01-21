@@ -1,0 +1,28 @@
+---
+layout: post
+title:  "canvas-01"
+description: canvas foundation.
+date:   2020-01-20 09:53:36 
+categories: canvas
+---
+默认绘图表面和元素大小都是300 150
+css设置元素大小后，绘图表面会根据比例缩放适应元素大小
+css设置w600px h300px 则绘图表面从相应300 150放大两倍，画面模糊
+
+```css
+#c1{
+  widht:600px;
+  height:300px;
+  border:1px solid black;
+}
+```
+```html
+<canvas id="c1"></canvas>
+```
+```js
+let oC=document.querySelector('#c1'),
+    ctx=oC.getContext('2d')
+ctx.font="40px PingFang"
+ctx.strokeText('Hello Canvas',100,100)
+```
+![image](../assets/img/c1.png)
