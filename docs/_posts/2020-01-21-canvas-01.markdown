@@ -25,4 +25,4 @@ let oC=document.querySelector('#c1'),
 ctx.font="40px PingFang"
 ctx.strokeText('Hello Canvas',100,100)
 ```
-![image](../assets/img/c1.png)
+![image](../../assets/img/c1.png)
