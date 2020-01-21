@@ -7,8 +7,7 @@ categories: suibi
 ---
 This is a new begining!
 
-```javascript
-console.log('hi')
+```zsh
+bundle exec jekyll build
 ```
-
 折腾了很长时间，搞定了!
