@@ -1,0 +1,106 @@
+---
+layout: post
+title:  "Ts"
+description: typescript.
+date:   2020-02-14 11:03:36 
+categories: suibi
+---
+
+# Typescript
+
+```ts
+let str: string = "string"
+let num: number = 123
+let bool: boolean = true
+let un: undefined = undefined
+let kong: null = null
+
+let any: any = 'anyone' any=1
+
+let fn = (): void => console.log(1)
+//联合类型
+let strnum: string|number =1 strnum='123'
+
+//interface
+
+interface ICar {
+  readonly type: string | number, //只读属性
+  color?: string //可有可无
+  [propName: string]: any //任意参数
+}
+let car1: ICar = { type: '1', color: 'blue' }
+let car2: ICar = { type: '1', height: 2 }
+
+//array
+//elemnt + []
+let arr1:number []=[1,2,3]
+let arr2:string []=['1','2','3']
+let arr3:any []=[1,'2',false]
+let arr0:ICar []=[{type:1}]
+//Array + <element>
+let arr1:Array<number>=[1,2,3]
+let arr2:Array<string>=['1','2','3']
+let arr3:Array<any>=[1,'2',false]
+let arr0:Array<ICar>=[{type:1}]
+//interface arr
+interface IArr{
+  [key:number]:ICar
+}
+let arr:IArr=[{type:0}]
+
+//function
+function foo(num1: number,num2: number): number{
+  return num1+num2
+}
+function bar1(name: string='abc',age: number=1): void{
+  ...
+}
+function bar2(name: string,age: number,title?: string): void{
+  ...
+}
+let total: number=foo(1,2)
+//类型断言
+function foo1(name: string|number){
+  // return (<string>name).length
+  return (name as string).length
+}
+
+//类型别名
+type Name =string|number
+let sn: Name=1 sn='123'
+
+interface IO1{
+  name: string|number
+}
+interface IO2{
+  age: number
+}
+type IO = IO1 | IO2
+let io0:IO ={name:'123'}
+let io1:IO ={age:10}
+let io2:IO ={name:'123',age:10}
+type color="red"||"blue"
+let a: color='red'
+
+//枚举
+enum Day{
+  mon,
+  tue,
+  wed,
+  thu,
+  fri,
+  sat,
+  sun
+}
+/**js实现
+ * let Day
+ * (function(Day){
+ *    Day[Day['mon']=1]=mon
+ *    Day[Day['tue']=2]=tue
+ *    Day[Day['wed']=3]=wed
+ *    Day[Day['thu']=4]=thu
+ *    Day[Day['fri']=5]=fri
+ *    Day[Day['sat']=6]=sat
+ *    Day[Day['sun']=7]=sun
+ * })(Day||(Day={}))
+```
