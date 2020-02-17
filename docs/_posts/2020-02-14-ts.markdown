@@ -3,26 +3,26 @@ layout: post
 title:  "Ts"
 description: typescript.
 date:   2020-02-14 11:03:36 
-categories: suibi
+categories: sumrise
 ---
 
 # Typescript
 
 ```ts
+// 基本类型
 let str: string = "string"
 let num: number = 123
 let bool: boolean = true
 let un: undefined = undefined
 let kong: null = null
 
-let any: any = 'anyone' any=1
+let any: any = 'anyone' any = 1
 
 let fn = (): void => console.log(1)
 //联合类型
-let strnum: string|number =1 strnum='123'
+let strnum: string | number = 1 strnum = '123'
 
-//interface
-
+//interface接口
 interface ICar {
   readonly type: string | number, //只读属性
   color?: string //可有可无
@@ -33,57 +33,60 @@ let car2: ICar = { type: '1', height: 2 }
 
 //array
 //elemnt + []
-let arr1:number []=[1,2,3]
-let arr2:string []=['1','2','3']
-let arr3:any []=[1,'2',false]
-let arr0:ICar []=[{type:1}]
+let arr1: number[] = [1, 2, 3]
+let arr2: string[] = ['1', '2', '3']
+let arr3: any[] = [1, '2', false]
+let arr0: ICar[] = [{ type: 1 }]
 //Array + <element>
-let arr1:Array<number>=[1,2,3]
-let arr2:Array<string>=['1','2','3']
-let arr3:Array<any>=[1,'2',false]
-let arr0:Array<ICar>=[{type:1}]
+let arr1: Array<number> = [1, 2, 3]
+let arr2: Array<string> = ['1', '2', '3']
+let arr3: Array<any> = [1, '2', false]
+let arr0: Array<ICar> = [{ type: 1 }]
 //interface arr
-interface IArr{
-  [key:number]:ICar
+interface IArr {
+  [key: number]: ICar
 }
-let arr:IArr=[{type:0}]
+let arr: IArr = [{ type: 0 }]
+
+// 元祖
+let arr: [string, boolean] = ['123', false]
 
 //function
-function foo(num1: number,num2: number): number{
-  return num1+num2
+function foo(num1: number, num2: number): number {
+  return num1 + num2
 }
-function bar1(name: string='abc',age: number=1): void{
+function bar1(name: string = 'abc', age: number = 1): void {
   ...
 }
-function bar2(name: string,age: number,title?: string): void{
+function bar2(name: string, age: number, title?: string): void {
   ...
 }
-let total: number=foo(1,2)
+let total: number = foo(1, 2)
 //类型断言
-function foo1(name: string|number){
+function foo1(name: string | number) {
   // return (<string>name).length
   return (name as string).length
 }
 
 //类型别名
-type Name =string|number
-let sn: Name=1 sn='123'
+type Name = string | number
+let sn: Name = 1 sn = '123'
 
-interface IO1{
-  name: string|number
+interface IO1 {
+  name: string | number
 }
-interface IO2{
+interface IO2 {
   age: number
 }
 type IO = IO1 | IO2
-let io0:IO ={name:'123'}
-let io1:IO ={age:10}
-let io2:IO ={name:'123',age:10}
-type color="red"||"blue"
-let a: color='red'
+let io0: IO = { name: '123' }
+let io1: IO = { age: 10 }
+let io2: IO = { name: '123', age: 10 }
+type color = "red"|| "blue"
+let a: color = 'red'
 
 //枚举
-enum Day{
+enum Day {
   mon,
   tue,
   wed,
@@ -103,4 +106,71 @@ enum Day{
  *    Day[Day['sat']=6]=sat
  *    Day[Day['sun']=7]=sun
  * })(Day||(Day={}))
+*/
+
+//  类
+class Person {
+  //声明属性
+  protected name: string,
+  private age: number
+  constructor(name: string, age: number) {
+    this.name = name
+    this.age = age
+  }
+  public show(): void {
+    console.log(this.name, this.age)
+  }
+}
+
+class Staff extends Person {
+  private job: Array<string>
+  constructor(name: string, age: number, job: Array<string>) {
+    super(name, age)
+    this.job = job
+  }
+  public show(): void {
+    super.show()
+    console.log(this.job)
+  }
+}
+
+class T {
+  constructor(private _name: string, private age: number) { }
+  public show() {
+    console.log(this._name, this.age)
+  }
+  get name(): string {
+    return this._name
+  }
+  set name(val) {
+    this._name = name
+  }
+}
+
+let person: Person = new Person('123', 18)
+let staff: Staff = new Staff('321', 18, ['stu'])
+let t: T = new T('321', 18)
+
+//抽象
+abstract class Shape {
+  abstract render(): void
+  abstract update(): void
+  abstract pointin(): boolean
+}
+class Rect extends Shape {
+  constructor(private width: number, private height: number) {
+    super()
+  }
+  render(): void {
+
+  }
+  update(): void {
+
+  }
+  pointin(): boolean {
+    return true
+  }
+
+}
+
 ```
