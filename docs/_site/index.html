@@ -30,6 +30,44 @@
 	<main>
 		<div class="container">
 			<ul class="posts"><li><div class="post-meta">
+			<a class="post-link" href="/posts/debouncethrottle/">
+				<h2 class="post-title">debounce throttle</h2>
+			</a>
+			<div class="post-date"><i class="icon-calendar"></i>Feb 18, 2020</div>
+		</div>
+		<div class="post"><h1 id="debounce--throttle">debounce &amp;&amp; throttle</h1>
+<h2 id="函数防抖在一定时间内只触发一次">函数防抖–在一定时间内只触发一次</h2>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">debounce</span> <span class="o">=</span> <span class="p">(</span><span class="nx">fn</span><span class="p">,</span> <span class="nx">delay</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">time</span>
+  <span class="k">return</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">args</span> <span class="o">=</span> <span class="nx">arguments</span> <span class="c1">//箭头函数没有arguments和this</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">time</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">clearTimeout</span><span class="p">(</span><span class="nx">time</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nx">time</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">fn</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">args</span><span class="p">)</span>
+    <span class="p">},</span> <span class="nx">delay</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<h2 id="函数节流间隔一段时间执行一次">函数节流–间隔一段时间执行一次</h2>
+<p>```js
+const throttle = (fn, delay) =&gt; {
+	let time
+	return function () {
+		let args = arguments //箭头函数没有arguments和this
+		if (time) {
+			return
+		}
+		time = setTimeout(() =&gt; {
+			fn.apply(this, args)
+			time = null
+		}, delay)
+	}
+}</p>
+
+</div>
+	</li><li><div class="post-meta">
 			<a class="post-link" href="/posts/ts/">
 				<h2 class="post-title">Ts</h2>
 			</a>

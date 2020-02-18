@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<title>debounce throttle</title>
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>debounce throttle | Tblog</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="debounce throttle" />
+<meta name="author" content="selfbabm" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="函数节流防抖." />
+<meta property="og:description" content="函数节流防抖." />
+<meta property="og:site_name" content="Tblog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-02-18T19:03:36+08:00" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"/posts/debouncethrottle/"},"url":"/posts/debouncethrottle/","author":{"@type":"Person","name":"selfbabm"},"headline":"debounce throttle","description":"函数节流防抖.","dateModified":"2020-02-18T19:03:36+08:00","datePublished":"2020-02-18T19:03:36+08:00","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+</head>
+<body>
+  <header class="texture-green">
+    <div class="container"></div><div class="container">
+	<h1>debounce throttle</h1>
+	<h4 class="post-description">函数节流防抖.</h4>
+	<div class="post-date" style="margin-top:20px">
+		Published on Feb 18, 2020
+	</div>
+	<ul class="post-tags"><li>sumrise</li></ul>
+</div>
+</header>
+  <main>
+    <div class="container">
+      <div class="post-container">
+          <h1 id="debounce--throttle">debounce &amp;&amp; throttle</h1>
+<h2 id="函数防抖在一定时间内只触发一次">函数防抖–在一定时间内只触发一次</h2>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">debounce</span> <span class="o">=</span> <span class="p">(</span><span class="nx">fn</span><span class="p">,</span> <span class="nx">delay</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">time</span>
+  <span class="k">return</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">args</span> <span class="o">=</span> <span class="nx">arguments</span> <span class="c1">//箭头函数没有arguments和this</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">time</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">clearTimeout</span><span class="p">(</span><span class="nx">time</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nx">time</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">fn</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">args</span><span class="p">)</span>
+    <span class="p">},</span> <span class="nx">delay</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<h2 id="函数节流间隔一段时间执行一次">函数节流–间隔一段时间执行一次</h2>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">throttle</span> <span class="o">=</span> <span class="p">(</span><span class="nx">fn</span><span class="p">,</span> <span class="nx">delay</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+	<span class="kd">let</span> <span class="nx">time</span>
+	<span class="k">return</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="kd">let</span> <span class="nx">args</span> <span class="o">=</span> <span class="nx">arguments</span> <span class="c1">//箭头函数没有arguments和this</span>
+		<span class="k">if</span> <span class="p">(</span><span class="nx">time</span><span class="p">)</span> <span class="p">{</span>
+			<span class="k">return</span>
+		<span class="p">}</span>
+		<span class="nx">time</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+			<span class="nx">fn</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">args</span><span class="p">)</span>
+			<span class="nx">time</span> <span class="o">=</span> <span class="kc">null</span>
+		<span class="p">},</span> <span class="nx">delay</span><span class="p">)</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">throttletime</span> <span class="o">=</span> <span class="p">(</span><span class="nx">fn</span><span class="p">,</span> <span class="nx">delay</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+	<span class="kd">let</span> <span class="nx">time</span> <span class="o">=</span> <span class="mi">0</span>
+	<span class="k">return</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+		<span class="kd">let</span> <span class="nx">args</span> <span class="o">=</span> <span class="nx">arguments</span>
+		<span class="kd">let</span> <span class="nx">now</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span>
+		<span class="k">if</span> <span class="p">(</span><span class="nx">now</span> <span class="o">-</span> <span class="nx">time</span> <span class="o">&gt;</span> <span class="nx">delay</span><span class="p">)</span> <span class="p">{</span>
+			<span class="nx">fn</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">args</span><span class="p">)</span>
+			<span class="nx">time</span> <span class="o">=</span> <span class="nx">now</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<ol>
+  <li>函数防抖应用场景
+    <ol>
+      <li>输入框输入搜索，用户一段时间内停止输入才开始输入</li>
+      <li>手机号邮箱验证同上</li>
+      <li>窗口大小调整，重新渲染</li>
+    </ol>
+  </li>
+  <li>函数节流应用场景
+    <ol>
+      <li>滚动加载</li>
+      <li>高频点击提交</li>
+    </ol>
+  </li>
+</ol>
+
+      </div>
+
+        <!-- Configure Disqus --></div>
+  </main></body>
+</html>
