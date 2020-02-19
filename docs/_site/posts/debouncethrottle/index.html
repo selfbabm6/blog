@@ -37,7 +37,7 @@
       <div class="post-container">
           <h1 id="debounce--throttle">debounce &amp;&amp; throttle</h1>
 <h2 id="函数防抖在一定时间内只触发一次">函数防抖–在一定时间内只触发一次</h2>
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">debounce</span> <span class="o">=</span> <span class="p">(</span><span class="nx">fn</span><span class="p">,</span> <span class="nx">delay</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">debounce</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">fn</span><span class="p">,</span> <span class="nx">delay</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">let</span> <span class="nx">time</span>
   <span class="k">return</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
     <span class="kd">let</span> <span class="nx">args</span> <span class="o">=</span> <span class="nx">arguments</span> <span class="c1">//箭头函数没有arguments和this</span>
@@ -51,31 +51,38 @@
 <span class="p">}</span>
 </code></pre></div></div>
 <h2 id="函数节流间隔一段时间执行一次">函数节流–间隔一段时间执行一次</h2>
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">throttle</span> <span class="o">=</span> <span class="p">(</span><span class="nx">fn</span><span class="p">,</span> <span class="nx">delay</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-	<span class="kd">let</span> <span class="nx">time</span>
-	<span class="k">return</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-		<span class="kd">let</span> <span class="nx">args</span> <span class="o">=</span> <span class="nx">arguments</span> <span class="c1">//箭头函数没有arguments和this</span>
-		<span class="k">if</span> <span class="p">(</span><span class="nx">time</span><span class="p">)</span> <span class="p">{</span>
-			<span class="k">return</span>
-		<span class="p">}</span>
-		<span class="nx">time</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-			<span class="nx">fn</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">args</span><span class="p">)</span>
-			<span class="nx">time</span> <span class="o">=</span> <span class="kc">null</span>
-		<span class="p">},</span> <span class="nx">delay</span><span class="p">)</span>
-	<span class="p">}</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">throttle</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">fn</span><span class="p">,</span> <span class="nx">delay</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">time</span>
+  <span class="k">return</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">args</span> <span class="o">=</span> <span class="nx">arguments</span> <span class="c1">//箭头函数没有arguments和this</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">time</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span>
+    <span class="p">}</span>
+    <span class="nx">time</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">fn</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">args</span><span class="p">)</span>
+      <span class="nx">time</span> <span class="o">=</span> <span class="kc">null</span>
+    <span class="p">},</span> <span class="nx">delay</span><span class="p">)</span>
+  <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="kd">const</span> <span class="nx">throttletime</span> <span class="o">=</span> <span class="p">(</span><span class="nx">fn</span><span class="p">,</span> <span class="nx">delay</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-	<span class="kd">let</span> <span class="nx">time</span> <span class="o">=</span> <span class="mi">0</span>
-	<span class="k">return</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-		<span class="kd">let</span> <span class="nx">args</span> <span class="o">=</span> <span class="nx">arguments</span>
-		<span class="kd">let</span> <span class="nx">now</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span>
-		<span class="k">if</span> <span class="p">(</span><span class="nx">now</span> <span class="o">-</span> <span class="nx">time</span> <span class="o">&gt;</span> <span class="nx">delay</span><span class="p">)</span> <span class="p">{</span>
-			<span class="nx">fn</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">args</span><span class="p">)</span>
-			<span class="nx">time</span> <span class="o">=</span> <span class="nx">now</span>
-		<span class="p">}</span>
-	<span class="p">}</span>
+<span class="kd">const</span> <span class="nx">throttletime</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">fn</span><span class="p">,</span> <span class="nx">delay</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">time</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="k">return</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">args</span> <span class="o">=</span> <span class="nx">arguments</span>
+    <span class="kd">let</span> <span class="nx">now</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">now</span> <span class="o">-</span> <span class="nx">time</span> <span class="o">&gt;</span> <span class="nx">delay</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">fn</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">args</span><span class="p">)</span>
+      <span class="nx">time</span> <span class="o">=</span> <span class="nx">now</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span>
+	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">element</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">input</span><span class="dl">'</span><span class="p">,</span><span class="nx">debounce</span><span class="p">(</span><span class="nx">foo</span><span class="p">,</span><span class="mi">1200</span><span class="p">))</span>
+<span class="nx">element</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">input</span><span class="dl">'</span><span class="p">,</span><span class="nx">throttle</span><span class="p">(</span><span class="nx">foo</span><span class="p">,</span><span class="mi">1200</span><span class="p">))</span>
+
 </code></pre></div></div>
 <ol>
   <li>函数防抖应用场景

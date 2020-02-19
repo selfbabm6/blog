@@ -9,7 +9,7 @@ categories: sumrise
 # debounce && throttle
 ## 函数防抖--在一定时间内只触发一次
 ```js
-const debounce = (fn, delay) => {
+const debounce = function (fn, delay) {
   let time
   return function () {
     let args = arguments //箭头函数没有arguments和this
@@ -24,31 +24,38 @@ const debounce = (fn, delay) => {
 ```
 ## 函数节流--间隔一段时间执行一次
 ```js
-const throttle = (fn, delay) => {
-	let time
-	return function () {
-		let args = arguments //箭头函数没有arguments和this
-		if (time) {
-			return
-		}
-		time = setTimeout(() => {
-			fn.apply(this, args)
-			time = null
-		}, delay)
-	}
+const throttle = function (fn, delay) {
+  let time
+  return function () {
+    let args = arguments //箭头函数没有arguments和this
+    if (time) {
+      return
+    }
+    time = setTimeout(() => {
+      fn.apply(this, args)
+      time = null
+    }, delay)
+  }
 }
 
-const throttletime = (fn, delay) => {
-	let time = 0
-	return function () {
-		let args = arguments
-		let now = Date.now()
-		if (now - time > delay) {
-			fn.apply(this, args)
-			time = now
-		}
-	}
+const throttletime = function (fn, delay) {
+  let time = 0
+  return function () {
+    let args = arguments
+    let now = Date.now()
+    if (now - time > delay) {
+      fn.apply(this, args)
+      time = now
+    }
+  }
 }
+
+function foo(e){
+	console.log(e)
+}
+element.addEventListener('input',debounce(foo,1200))
+element.addEventListener('input',throttle(foo,1200))
+
 ```
 1. 函数防抖应用场景
     1. 输入框输入搜索，用户一段时间内停止输入才开始输入
