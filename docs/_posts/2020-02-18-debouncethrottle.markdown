@@ -7,7 +7,9 @@ categories: sumrise
 ---
 
 # debounce && throttle
+
 ## 函数防抖--在一定时间内只触发一次
+
 ```js
 const debounce = function (fn, delay) {
   let time

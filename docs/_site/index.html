@@ -36,19 +36,6 @@
 			<div class="post-date"><i class="icon-calendar"></i>Feb 19, 2020</div>
 		</div>
 		<div class="post"><h1 id="js基础题">js基础题</h1>
-<p>```js
-var b = 10;
-(function b(){
-    b = 20;
-    console.log(b); 
-})() //fn
-/**</p>
-<ul>
-  <li>IIFE中的函数是函数表达式，而不是函数声明</li>
-  <li>函数表达式与函数声明不同，函数名只在该函数内部有效，并且此绑定是常量绑定</li>
-  <li>函数体内的函数名再去赋值，会静默失败。类似常量再赋值
- */</li>
-</ul>
 
 </div>
 	</li><li><div class="post-meta">
@@ -58,35 +45,6 @@ var b = 10;
 			<div class="post-date"><i class="icon-calendar"></i>Feb 18, 2020</div>
 		</div>
 		<div class="post"><h1 id="debounce--throttle">debounce &amp;&amp; throttle</h1>
-<h2 id="函数防抖在一定时间内只触发一次">函数防抖–在一定时间内只触发一次</h2>
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">debounce</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">fn</span><span class="p">,</span> <span class="nx">delay</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">let</span> <span class="nx">time</span>
-  <span class="k">return</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="kd">let</span> <span class="nx">args</span> <span class="o">=</span> <span class="nx">arguments</span> <span class="c1">//箭头函数没有arguments和this</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">time</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">clearTimeout</span><span class="p">(</span><span class="nx">time</span><span class="p">)</span>
-    <span class="p">}</span>
-    <span class="nx">time</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="nx">fn</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">args</span><span class="p">)</span>
-    <span class="p">},</span> <span class="nx">delay</span><span class="p">)</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></div>
-<h2 id="函数节流间隔一段时间执行一次">函数节流–间隔一段时间执行一次</h2>
-<p>```js
-const throttle = function (fn, delay) {
-  let time
-  return function () {
-    let args = arguments //箭头函数没有arguments和this
-    if (time) {
-      return
-    }
-    time = setTimeout(() =&gt; {
-      fn.apply(this, args)
-      time = null
-    }, delay)
-  }
-}</p>
 
 </div>
 	</li><li><div class="post-meta">

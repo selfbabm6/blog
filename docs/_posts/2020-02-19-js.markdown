@@ -7,6 +7,7 @@ categories: sumrise
 ---
 
 # js基础题
+
 ```js
 var b = 10;
 (function b(){
@@ -114,4 +115,5 @@ console.log('script end');  //5
 /**await 会让出函数执行栈 (async函数默认返回promise)
  * new Promise会立即执行同步代码
  * 先执行宏任务，紧接着执行微任务,接着渲染 eventloop
+ */
 ```
