@@ -48,6 +48,12 @@ interface IArr {
 }
 let arr: IArr = [{ type: 0 }]
 
+//泛型
+function loggingIdentity<T>(arg: Array<T>): Array<T> {
+    console.log(arg.length);  // Array has a .length, so no more error
+    return arg;
+}
+
 // 元祖
 let arr: [string, boolean] = ['123', false]
 
@@ -62,6 +68,14 @@ function bar2(name: string, age: number, title?: string): void {
   ...
 }
 let total: number = foo(1, 2)
+
+interface Foo{
+  (name:string,age:number):void
+}
+let foo:Foo(name:string,fage:number):void{
+  console.log(name,fage)
+}
+
 //类型断言
 function foo1(name: string | number) {
   // return (<string>name).length

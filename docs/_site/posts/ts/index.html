@@ -76,42 +76,56 @@
 <span class="p">}</span>
 <span class="kd">let</span> <span class="nx">arr</span><span class="p">:</span> <span class="nx">IArr</span> <span class="o">=</span> <span class="p">[{</span> <span class="na">type</span><span class="p">:</span> <span class="mi">0</span> <span class="p">}]</span>
 
+<span class="c1">//泛型</span>
+<span class="kd">function</span> <span class="nx">loggingIdentity</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">arg</span><span class="p">:</span> <span class="nb">Array</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">):</span> <span class="nb">Array</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arg</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>  <span class="c1">// Array has a .length, so no more error</span>
+    <span class="k">return</span> <span class="nx">arg</span><span class="p">;</span>
+<span class="p">}</span>
+
 <span class="c1">// 元祖</span>
-<span class="kd">let</span> <span class="nx">arr</span><span class="p">:</span> <span class="p">[</span><span class="nx">string</span><span class="p">,</span> <span class="nx">boolean</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">123</span><span class="dl">'</span><span class="p">,</span> <span class="kc">false</span><span class="p">]</span>
+<span class="kd">let</span> <span class="na">arr</span><span class="p">:</span> <span class="p">[</span><span class="nx">string</span><span class="p">,</span> <span class="nx">boolean</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">123</span><span class="dl">'</span><span class="p">,</span> <span class="kc">false</span><span class="p">]</span>
 
 <span class="c1">//function</span>
-<span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="nx">num1</span><span class="p">:</span> <span class="nx">number</span><span class="p">,</span> <span class="nx">num2</span><span class="p">:</span> <span class="nx">number</span><span class="p">):</span> <span class="nx">number</span> <span class="p">{</span>
+<span class="kd">function</span> <span class="nx">foo</span><span class="p">(</span><span class="na">num1</span><span class="p">:</span> <span class="nx">number</span><span class="p">,</span> <span class="na">num2</span><span class="p">:</span> <span class="nx">number</span><span class="p">):</span> <span class="nx">number</span> <span class="p">{</span>
   <span class="k">return</span> <span class="nx">num1</span> <span class="o">+</span> <span class="nx">num2</span>
 <span class="p">}</span>
-<span class="kd">function</span> <span class="nx">bar1</span><span class="p">(</span><span class="nx">name</span><span class="p">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">abc</span><span class="dl">'</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="nx">number</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
+<span class="kd">function</span> <span class="nx">bar1</span><span class="p">(</span><span class="na">name</span><span class="p">:</span> <span class="nx">string</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">abc</span><span class="dl">'</span><span class="p">,</span> <span class="na">age</span><span class="p">:</span> <span class="nx">number</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
   <span class="p">...</span>
 <span class="p">}</span>
-<span class="kd">function</span> <span class="nx">bar2</span><span class="p">(</span><span class="nx">name</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="nx">number</span><span class="p">,</span> <span class="nx">title</span><span class="p">?:</span> <span class="nx">string</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
+<span class="kd">function</span> <span class="nx">bar2</span><span class="p">(</span><span class="na">name</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span> <span class="na">age</span><span class="p">:</span> <span class="nx">number</span><span class="p">,</span> <span class="nx">title</span><span class="p">?:</span> <span class="nx">string</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
   <span class="p">...</span>
 <span class="p">}</span>
-<span class="kd">let</span> <span class="nx">total</span><span class="p">:</span> <span class="nx">number</span> <span class="o">=</span> <span class="nx">foo</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="kd">let</span> <span class="na">total</span><span class="p">:</span> <span class="nx">number</span> <span class="o">=</span> <span class="nx">foo</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="kr">interface</span> <span class="nx">Foo</span><span class="p">{</span>
+  <span class="p">(</span><span class="na">name</span><span class="p">:</span><span class="nx">string</span><span class="p">,</span><span class="na">age</span><span class="p">:</span><span class="nx">number</span><span class="p">):</span><span class="k">void</span>
+<span class="p">}</span>
+<span class="kd">let</span> <span class="na">foo</span><span class="p">:</span><span class="nx">Foo</span><span class="p">(</span><span class="na">name</span><span class="p">:</span><span class="nx">string</span><span class="p">,</span><span class="na">fage</span><span class="p">:</span><span class="nx">number</span><span class="p">):</span><span class="k">void</span><span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span><span class="nx">fage</span><span class="p">)</span>
+<span class="p">}</span>
+
 <span class="c1">//类型断言</span>
-<span class="kd">function</span> <span class="nx">foo1</span><span class="p">(</span><span class="nx">name</span><span class="p">:</span> <span class="nx">string</span> <span class="o">|</span> <span class="nx">number</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">function</span> <span class="nx">foo1</span><span class="p">(</span><span class="na">name</span><span class="p">:</span> <span class="nx">string</span> <span class="o">|</span> <span class="nx">number</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// return (&lt;string&gt;name).length</span>
   <span class="k">return</span> <span class="p">(</span><span class="nx">name</span> <span class="k">as</span> <span class="nx">string</span><span class="p">).</span><span class="nx">length</span>
 <span class="p">}</span>
 
 <span class="c1">//类型别名</span>
 <span class="nx">type</span> <span class="nx">Name</span> <span class="o">=</span> <span class="nx">string</span> <span class="o">|</span> <span class="nx">number</span>
-<span class="kd">let</span> <span class="nx">sn</span><span class="p">:</span> <span class="nx">Name</span> <span class="o">=</span> <span class="mi">1</span> <span class="nx">sn</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">123</span><span class="dl">'</span>
+<span class="kd">let</span> <span class="na">sn</span><span class="p">:</span> <span class="nx">Name</span> <span class="o">=</span> <span class="mi">1</span> <span class="nx">sn</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">123</span><span class="dl">'</span>
 
 <span class="kr">interface</span> <span class="nx">IO1</span> <span class="p">{</span>
-  <span class="nl">name</span><span class="p">:</span> <span class="nx">string</span> <span class="o">|</span> <span class="nx">number</span>
+  <span class="na">name</span><span class="p">:</span> <span class="nx">string</span> <span class="o">|</span> <span class="nx">number</span>
 <span class="p">}</span>
 <span class="kr">interface</span> <span class="nx">IO2</span> <span class="p">{</span>
-  <span class="nl">age</span><span class="p">:</span> <span class="nx">number</span>
+  <span class="na">age</span><span class="p">:</span> <span class="nx">number</span>
 <span class="p">}</span>
 <span class="nx">type</span> <span class="nx">IO</span> <span class="o">=</span> <span class="nx">IO1</span> <span class="o">|</span> <span class="nx">IO2</span>
-<span class="kd">let</span> <span class="nx">io0</span><span class="p">:</span> <span class="nx">IO</span> <span class="o">=</span> <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">123</span><span class="dl">'</span> <span class="p">}</span>
-<span class="kd">let</span> <span class="nx">io1</span><span class="p">:</span> <span class="nx">IO</span> <span class="o">=</span> <span class="p">{</span> <span class="na">age</span><span class="p">:</span> <span class="mi">10</span> <span class="p">}</span>
-<span class="kd">let</span> <span class="nx">io2</span><span class="p">:</span> <span class="nx">IO</span> <span class="o">=</span> <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">123</span><span class="dl">'</span><span class="p">,</span> <span class="na">age</span><span class="p">:</span> <span class="mi">10</span> <span class="p">}</span>
+<span class="kd">let</span> <span class="na">io0</span><span class="p">:</span> <span class="nx">IO</span> <span class="o">=</span> <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">123</span><span class="dl">'</span> <span class="p">}</span>
+<span class="kd">let</span> <span class="na">io1</span><span class="p">:</span> <span class="nx">IO</span> <span class="o">=</span> <span class="p">{</span> <span class="na">age</span><span class="p">:</span> <span class="mi">10</span> <span class="p">}</span>
+<span class="kd">let</span> <span class="na">io2</span><span class="p">:</span> <span class="nx">IO</span> <span class="o">=</span> <span class="p">{</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">123</span><span class="dl">'</span><span class="p">,</span> <span class="na">age</span><span class="p">:</span> <span class="mi">10</span> <span class="p">}</span>
 <span class="nx">type</span> <span class="nx">color</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">red</span><span class="dl">"</span><span class="o">||</span> <span class="dl">"</span><span class="s2">blue</span><span class="dl">"</span>
-<span class="kd">let</span> <span class="nx">a</span><span class="p">:</span> <span class="nx">color</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">red</span><span class="dl">'</span>
+<span class="kd">let</span> <span class="na">a</span><span class="p">:</span> <span class="nx">color</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">red</span><span class="dl">'</span>
 
 <span class="c1">//枚举</span>
 <span class="kr">enum</span> <span class="nx">Day</span> <span class="p">{</span>
@@ -139,9 +153,9 @@
 <span class="c1">//  类</span>
 <span class="kd">class</span> <span class="nx">Person</span> <span class="p">{</span>
   <span class="c1">//声明属性</span>
-  <span class="kr">protected</span> <span class="nx">name</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
-  <span class="kr">private</span> <span class="nx">age</span><span class="p">:</span> <span class="nx">number</span>
-  <span class="kd">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="nx">number</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kr">protected</span> <span class="na">name</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span>
+  <span class="kr">private</span> <span class="na">age</span><span class="p">:</span> <span class="nx">number</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="na">name</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span> <span class="na">age</span><span class="p">:</span> <span class="nx">number</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="nx">age</span>
   <span class="p">}</span>
@@ -151,8 +165,8 @@
 <span class="p">}</span>
 
 <span class="kd">class</span> <span class="nx">Staff</span> <span class="kd">extends</span> <span class="nx">Person</span> <span class="p">{</span>
-  <span class="kr">private</span> <span class="nx">job</span><span class="p">:</span> <span class="nb">Array</span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span>
-  <span class="kd">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="nx">number</span><span class="p">,</span> <span class="nx">job</span><span class="p">:</span> <span class="nb">Array</span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kr">private</span> <span class="na">job</span><span class="p">:</span> <span class="nb">Array</span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="na">name</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span> <span class="na">age</span><span class="p">:</span> <span class="nx">number</span><span class="p">,</span> <span class="na">job</span><span class="p">:</span> <span class="nb">Array</span><span class="o">&lt;</span><span class="nx">string</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">super</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">)</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">job</span> <span class="o">=</span> <span class="nx">job</span>
   <span class="p">}</span>
@@ -163,7 +177,7 @@
 <span class="p">}</span>
 
 <span class="kd">class</span> <span class="nx">T</span> <span class="p">{</span>
-  <span class="kd">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">_name</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span> <span class="kr">private</span> <span class="nx">age</span><span class="p">:</span> <span class="nx">number</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="na">_name</span><span class="p">:</span> <span class="nx">string</span><span class="p">,</span> <span class="kr">private</span> <span class="na">age</span><span class="p">:</span> <span class="nx">number</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
   <span class="kr">public</span> <span class="nx">show</span><span class="p">()</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_name</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">age</span><span class="p">)</span>
   <span class="p">}</span>
@@ -175,9 +189,9 @@
   <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="kd">let</span> <span class="nx">person</span><span class="p">:</span> <span class="nx">Person</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="dl">'</span><span class="s1">123</span><span class="dl">'</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
-<span class="kd">let</span> <span class="nx">staff</span><span class="p">:</span> <span class="nx">Staff</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Staff</span><span class="p">(</span><span class="dl">'</span><span class="s1">321</span><span class="dl">'</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="p">[</span><span class="dl">'</span><span class="s1">stu</span><span class="dl">'</span><span class="p">])</span>
-<span class="kd">let</span> <span class="nx">t</span><span class="p">:</span> <span class="nx">T</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">T</span><span class="p">(</span><span class="dl">'</span><span class="s1">321</span><span class="dl">'</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+<span class="kd">let</span> <span class="na">person</span><span class="p">:</span> <span class="nx">Person</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">(</span><span class="dl">'</span><span class="s1">123</span><span class="dl">'</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+<span class="kd">let</span> <span class="na">staff</span><span class="p">:</span> <span class="nx">Staff</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Staff</span><span class="p">(</span><span class="dl">'</span><span class="s1">321</span><span class="dl">'</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="p">[</span><span class="dl">'</span><span class="s1">stu</span><span class="dl">'</span><span class="p">])</span>
+<span class="kd">let</span> <span class="na">t</span><span class="p">:</span> <span class="nx">T</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">T</span><span class="p">(</span><span class="dl">'</span><span class="s1">321</span><span class="dl">'</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
 
 <span class="c1">//抽象</span>
 <span class="nx">abstract</span> <span class="kd">class</span> <span class="nx">Shape</span> <span class="p">{</span>
@@ -186,7 +200,7 @@
   <span class="nx">abstract</span> <span class="nx">pointin</span><span class="p">():</span> <span class="nx">boolean</span>
 <span class="p">}</span>
 <span class="kd">class</span> <span class="nx">Rect</span> <span class="kd">extends</span> <span class="nx">Shape</span> <span class="p">{</span>
-  <span class="kd">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="nx">width</span><span class="p">:</span> <span class="nx">number</span><span class="p">,</span> <span class="kr">private</span> <span class="nx">height</span><span class="p">:</span> <span class="nx">number</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="kr">private</span> <span class="na">width</span><span class="p">:</span> <span class="nx">number</span><span class="p">,</span> <span class="kr">private</span> <span class="na">height</span><span class="p">:</span> <span class="nx">number</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">super</span><span class="p">()</span>
   <span class="p">}</span>
   <span class="nx">render</span><span class="p">():</span> <span class="k">void</span> <span class="p">{</span>
