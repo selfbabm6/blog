@@ -6,7 +6,8 @@ date:   2020-02-22 09:53:36
 categories: handwritting
 ---
 
-#call,apply,bind
+# call,apply,bind
+
 ```js
 //mycall
 Function.prototype.mycall = function (ctx = window) {

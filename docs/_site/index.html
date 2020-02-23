@@ -35,37 +35,8 @@
 			</a>
 			<div class="post-date"><i class="icon-calendar"></i>Feb 22, 2020</div>
 		</div>
-		<div class="post"><p>#call,apply,bind</p>
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//mycall</span>
-<span class="nb">Function</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">mycall</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ctx</span> <span class="o">=</span> <span class="nb">window</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">let</span> <span class="nx">args</span> <span class="o">=</span> <span class="p">[...</span><span class="nx">arguments</span><span class="p">].</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-  <span class="nx">ctx</span><span class="p">.</span><span class="nx">fn</span> <span class="o">=</span> <span class="k">this</span>
-  <span class="kd">let</span> <span class="nx">resultFn</span> <span class="o">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">fn</span><span class="p">(...</span><span class="nx">args</span><span class="p">)</span>
-  <span class="k">delete</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">fn</span>
-  <span class="k">return</span> <span class="nx">resultFn</span>
-<span class="p">}</span>
-<span class="c1">//myapply</span>
-<span class="nb">Function</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">myapply</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ctx</span> <span class="o">=</span> <span class="nb">window</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">ctx</span><span class="p">.</span><span class="nx">fn</span> <span class="o">=</span> <span class="k">this</span>
-  <span class="kd">let</span> <span class="nx">resultFn</span>
-  <span class="c1">// 处理参数和 call 有区别 apply传入的是数组</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">arguments</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="p">{</span>
-    <span class="nx">resultFn</span> <span class="o">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">fn</span><span class="p">(...</span><span class="nx">arguments</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="nx">resultFn</span> <span class="o">=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">fn</span><span class="p">()</span>
-  <span class="p">}</span>
-  <span class="k">delete</span> <span class="nx">ctx</span><span class="p">.</span><span class="nx">fn</span>
-  <span class="k">return</span> <span class="nx">resultFn</span>
-<span class="p">}</span>
-<span class="c1">//mybind</span>
-<span class="nb">Function</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">mybind</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">ctx</span> <span class="o">=</span> <span class="nb">window</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">let</span> <span class="nx">arg</span> <span class="o">=</span> <span class="p">[...</span><span class="nx">arguments</span><span class="p">].</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="nx">_this</span> <span class="o">=</span> <span class="k">this</span>
-  <span class="k">return</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="c1">//注意新函数传入的参数</span>
-    <span class="nx">_this</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span> <span class="nx">arg</span><span class="p">.</span><span class="nx">concat</span><span class="p">(...</span><span class="nx">arguments</span><span class="p">))</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></div>
+		<div class="post"><h1 id="callapplybind">call,apply,bind</h1>
+
 </div>
 	</li><li><div class="post-meta">
 			<a class="post-link" href="/posts/js/">
